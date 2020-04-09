@@ -124,10 +124,13 @@ resource aws_instance "hashicat" {
 
   tags = {
     Name = "${var.prefix}-hashicat-instance"
-    Name = "${var.billable}-true"
-    Name = "${var.department }-devops"
+  }
+      tags          = {
+    Billable    = "true"
+    Department  = "devops"
   }
 }
+
 
 # We're using a little trick here so we can run the provisioner without
 # destroying the VM. Do not do this in production.
